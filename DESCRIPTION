@@ -1,0 +1,17 @@
+Package: ensemblr
+Title: The S3 ensemble class
+Version: 0.1.0
+Authors@R: c(person(given = "Thorsten", family = "Simon", role = c("aut", "cre"),
+               email = "thorsten.simon@uibk.ac.at",
+               comment = c(ORCID = "0000-0002-3778-7738")))
+Description: Implementation of the S3 class ensmble, for handling (NWP) ensemble data in
+             model fitting, processing, empirical copula coupling. 
+Depends: R (>= 3.0.0)
+License: GPL-3
+Encoding: UTF-8
+Imports: stats
+RoxygenNote: 6.1.1
+Suggests: R.rsp, knitr, rmarkdown
+VignetteBuilder: knitr
+
+

@@ -1,0 +1,42 @@
+---
+title: "Linear Model with Ensemble Covariate"
+author: "Thorsten Simon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Linear Model with Ensemble Covariate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, setup}
+library("ensemblr")
+set.seed(111)
+```
+
+```{r, sim_data}
+n <- 100
+k <- 20
+x_mean <- runif(n)
+d <- data.frame(
+  y = rnorm(n, mean = x_mean, sd = .2)
+)
+
+d$x <- as_ensemble(
+  replicate(k, rnorm(n, mean = x_mean, sd = .8))
+)
+
+rm(x_mean)
+
+dim(d)
+head(d)
+```
+
+```{r, fit_models}
+plot(y ~ x[, 1], data = d)
+plot(y ~ mean(x), data = d)
+
+lm(y ~ x[, 1], data = d)
+lm(y ~ mean(x), data = d)
+```
+
