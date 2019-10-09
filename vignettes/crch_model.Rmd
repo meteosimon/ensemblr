@@ -1,0 +1,54 @@
+---
+title: "Heteroscedastic Model with Ensemble Covariate"
+author: "Thorsten Simon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Heteroscedastic Model with Ensemble Covariate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{crch}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, setup}
+library("ensemblr")
+library("crch")
+set.seed(111)
+```
+
+```{r, sim_data}
+n <- 120
+k <- 30
+x_mean <- runif(n, -3, 3)
+x_sd <- exp(runif(n, -1, 1))
+d <- data.frame(
+  y = rnorm(n, mean = x_mean, sd = x_sd)
+)
+
+d$x <- as_ensemble(
+  replicate(k, rnorm(n, mean = x_mean, sd = x_sd))
+)
+
+rm(x_mean, x_sd)
+
+dim(d)
+head(d)
+```
+
+```{r, fit_models}
+plot(y ~ x[, 1], data = d)
+plot(y ~ mean(x), data = d)
+
+# lm(y ~ x[, 1], data = d)
+fm <- lm(y ~ mean(x), data = d)
+summary(fm)
+abline(fm, col = "darkred")
+d$res <- resid(fm)
+
+plot(res ~ log(ens_sd(x)), data = d)
+abline(h = 0, col = "darkred")
+
+fm2 <- crch(y ~ mean(x) | log(ens_sd(x)), data = d)
+summary(fm2)
+```
+

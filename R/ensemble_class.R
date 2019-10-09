@@ -22,8 +22,19 @@ as_ensemble.default <- function(x, ...) {
 #' @method mean ensemble
 #' @export
 mean.ensemble <- function(x, ...) {
-  rval <- rowMeans(x, ...)
-  rval
+  rowMeans(x, ...)
+}
+
+#' @method median ensemble
+#' @export
+median.ensemble <- function(x, ...) {
+  apply(x, 1, median, ...)
+}
+
+#' @method quantile ensemble
+#' @export
+quantile.ensemble <- function(x, ...) {
+  apply(x, 1, quantile, ...)
 }
 
 

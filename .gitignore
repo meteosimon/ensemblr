@@ -1,0 +1,6 @@
+# Dont ignore this file
+!.gitignore
+
+# Ignore local pkgdown site
+docs/*
+

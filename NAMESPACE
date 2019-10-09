@@ -2,4 +2,7 @@
 
 S3method(as_ensemble,default)
 S3method(mean,ensemble)
+S3method(median,ensemble)
+S3method(quantile,ensemble)
 export(as_ensemble)
+export(ens_sd)
