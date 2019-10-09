@@ -5,6 +5,7 @@
 #' The default methods applies \code{as.matrix}.
 #'
 #' @param x An object.
+#' @param ... Further arguments, unused in default method.
 #' @return An object of class ensemble.
 #' @export
 as_ensemble <- function(x, ...) {
@@ -27,14 +28,14 @@ mean.ensemble <- function(x, ...) {
 
 #' @method median ensemble
 #' @export
-median.ensemble <- function(x, ...) {
-  apply(x, 1, median, ...)
+median.ensemble <- function(x, na.rm = FALSE, ...) {
+  apply(x, 1, stats::median, na.rm = na.rm, ...)
 }
 
 #' @method quantile ensemble
 #' @export
 quantile.ensemble <- function(x, ...) {
-  apply(x, 1, quantile, ...)
+  apply(x, 1, stats::quantile, ...)
 }
 
 

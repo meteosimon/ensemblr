@@ -11,6 +11,8 @@ as_ensemble(x, ...)
 }
 \arguments{
 \item{x}{An object.}
+
+\item{...}{Further arguments, unused in default method.}
 }
 \value{
 An object of class ensemble.
