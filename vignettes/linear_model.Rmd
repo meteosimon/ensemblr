@@ -16,14 +16,14 @@ set.seed(111)
 
 ```{r, sim_data}
 n <- 100
-k <- 20
-x_mean <- runif(n)
+k <- 25
+x_mean <- runif(n, -3, 3)
 d <- data.frame(
-  y = rnorm(n, mean = x_mean, sd = .2)
+  y = rnorm(n, mean = x_mean)
 )
 
 d$x <- as_ensemble(
-  replicate(k, rnorm(n, mean = x_mean, sd = .8))
+  replicate(k, rnorm(n, mean = x_mean))
 )
 
 rm(x_mean)
@@ -36,7 +36,9 @@ head(d)
 plot(y ~ x[, 1], data = d)
 plot(y ~ mean(x), data = d)
 
-lm(y ~ x[, 1], data = d)
-lm(y ~ mean(x), data = d)
+# lm(y ~ x[, 1], data = d)
+fm <- lm(y ~ mean(x), data = d)
+summary(fm)
+abline(fm, col = "darkred")
 ```
 
