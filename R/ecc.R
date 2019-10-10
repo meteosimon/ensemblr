@@ -56,7 +56,7 @@ ecc_q <- function(model, newdata, origin_name, ...) {
 ecc_r <- function(model, newdata, origin_name, ...) {
   # --- predict quantiles ---
   k <- nmembers(newdata[[origin_name]])
-  probs <- runif(k)               # random probabilities for random quantiles
+  probs <- stats::runif(k)             # random probabilities for random quantiles
   fit <- stats::predict(model, newdata = newdata, type = "quantile", at = probs)
 
   # --- apply ranks ---
