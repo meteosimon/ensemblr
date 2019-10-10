@@ -17,7 +17,7 @@ set.seed(111)
 ```
 
 ```{r, sim_data}
-n <- 120
+n <- 200
 k <- 30
 x_mean <- runif(n, -3, 3)
 x_sd <- exp(runif(n, -1, 1))
@@ -31,8 +31,16 @@ d$x <- as_ensemble(
 
 rm(x_mean, x_sd)
 
+# --- split training and prediction data ---
+nd <- d[121:200, ]
+d <- d[1:120, ]
+
+# --- CAUTION: subset method is missing, next two lines are an hard coded fix:
+nd$x <- as_ensemble(nd$x)
+d$x <- as_ensemble(d$x)
+
 dim(d)
-head(d)
+str(d)
 ```
 
 ```{r, fit_models}
@@ -50,5 +58,8 @@ abline(h = 0, col = "darkred")
 
 fm2 <- crch(y ~ mean(x) | log(ens_sd(x)), data = d)
 summary(fm2)
+
+nd$fit <- ecc_q(fm2, newdata = nd, origin_name = "x")
+str(nd)
 ```
 

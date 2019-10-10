@@ -1,6 +1,8 @@
 TODOs
 =====
 
+* A `subset` method that preserves the class.
+
 * A function `apply_rank()`, that would that the rank structure
     of one ensemble and apply it to another ensemble, i.e.,
     from the raw ensemble to an ensemble of quantiles drawn from
