@@ -27,18 +27,26 @@ mean.ensemble <- function(x, ...) {
 }
 
 #' @method median ensemble
+#' @importFrom stats median
 #' @export
 median.ensemble <- function(x, na.rm = FALSE, ...) {
   apply(x, 1, stats::median, na.rm = na.rm, ...)
 }
 
 #' @method quantile ensemble
+#' @importFrom stats quantile
 #' @export
 quantile.ensemble <- function(x, ...) {
   apply(x, 1, stats::quantile, ...)
 }
 
-
+#' Access the number of ensemble members. 
+#'
+#' @param x An enemble.
+#' @export
+nmembers <- function(x) {
+  ncol(x)
+}	
 
 
 

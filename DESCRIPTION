@@ -7,7 +7,7 @@ Authors@R: c(person(given = "Thorsten", family = "Simon", role = c("aut", "cre")
 Description: Implementation of the S3 class ensmble, for handling (NWP) ensemble data in
              model fitting, processing, empirical copula coupling. 
 Depends: R (>= 3.0.0), stats
-License: GPL-3
+License: file LICENSE 
 Encoding: UTF-8
 RoxygenNote: 6.1.1
 Suggests: knitr, rmarkdown, crch
