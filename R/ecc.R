@@ -22,7 +22,7 @@ apply_rank <- function(x, origin, ...) {
 
   # --- apply ranks ---
   # First modify vector of ranks by adding
-  # 0, 0, ..., 0, 1, 1, ..., 1, ..., n-1, n-1, ..., n-1
+  # 0, 0, ..., 0, k, k, ..., k, 2*k, 2*k, ..., 2*k, ..., k*(n-1), k*(n-1), ..., k*(n-1)
   # so that the zeros refer to the first obs in the ensemble, and so on
   rnk <- rnk + rep((seq_len(n) - 1) * k, each = k)
   x <- matrix(x[rnk], ncol = k, nrow = n, byrow = TRUE)

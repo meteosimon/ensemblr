@@ -48,5 +48,11 @@ nmembers <- function(x) {
   ncol(x)
 }	
 
-
+#' @method [ ensemble
+#' @export
+`[.ensemble` <- function(x, i, j, drop = TRUE) {
+  x <- NextMethod()
+  class(x) <- c("ensemble", class(x))
+  x
+}
 

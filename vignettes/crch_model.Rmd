@@ -35,9 +35,9 @@ rm(x_mean, x_sd)
 nd <- d[121:200, ]
 d <- d[1:120, ]
 
-# --- CAUTION: subset method is missing, next two lines are an hard coded fix:
-nd$x <- as_ensemble(nd$x)
-d$x <- as_ensemble(d$x)
+## # --- CAUTION: subset method is missing, next two lines are an hard coded fix:
+## nd$x <- as_ensemble(nd$x)
+## d$x <- as_ensemble(d$x)
 
 dim(d)
 str(d)
