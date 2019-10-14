@@ -2,7 +2,9 @@
 
 # ensemblr
 
-Handle ensemble data as covariates of regression models.
+Handle ensemble data as covariates of regression models. For an example check
+the vignette, [Heteroscedastic Model with Ensemble Covariate](https://meteosimon.github.io/ensemblr/articles/crch_model.html).
+
 
 ## Install
 
