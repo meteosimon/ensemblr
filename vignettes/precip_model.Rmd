@@ -1,0 +1,32 @@
+---
+title: "A Precip Model"
+author: "Thorsten Simon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Heteroscedastic Model with Ensemble Covariate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{crch}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, setup}
+Sys.setenv("TZ" = "UTC")
+library("ensemblr")
+library("crch")
+set.seed(111)
+```
+
+```{r, data}
+data("RainIbk")
+RainIbk$ens <- as_ensemble(RainIbk[grep("rainfc", names(RainIbk))])
+RainIbk[grep("rainfc", names(RainIbk))] <- NULL
+names(RainIbk)[1] <- "obs"
+RainIbk$time <- as.POSIXct(rownames(RainIbk))
+str(RainIbk)
+```
+
+Split training (2000--2008) and testing (2008--2013)
+
+
+
